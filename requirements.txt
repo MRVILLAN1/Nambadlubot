@@ -1,4 +1,5 @@
-pyrogram==2.0.93
+#pyrogram==2.0.93
+hydrogram
 TgCrypto
 motor
 dnspython
