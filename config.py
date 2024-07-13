@@ -12,6 +12,10 @@ class Config(object):
     # digital_botz client config
     API_ID = os.environ.get("API_ID", "")
     API_HASH = os.environ.get("API_HASH", "")
+
+    DC_API_ID = os.environ.get("DC_API_ID", "")
+    DC_API_HASH = os.environ.get("DC_API_HASH", "")
+    
     BOT_TOKEN = os.environ.get("BOT_TOKEN", "") 
 
     # premium account string session required 😢 
