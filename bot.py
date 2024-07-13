@@ -13,10 +13,19 @@ from config import Config, rkn
 from hydrogram.types import InlineKeyboardButton, InlineKeyboardMarkup
 from hachoir.metadata import extractMetadata
 from hachoir.parser import createParser
+from hydrogram.file_id import FileId
 
 bot = Client(name="Tested-Botz",
             api_id=Config.API_ID,
             api_hash=Config.API_HASH,
+            bot_token=Config.BOT_TOKEN,
+            workers=200,
+          #  plugins={"root": "plugins"},
+            sleep_threshold=15)
+
+dc_bot = Client(name="Dc-Tested-Botz",
+            api_id=Config.DC_API_ID,
+            api_hash=Config.DC_API_HASH,
             bot_token=Config.BOT_TOKEN,
             workers=200,
           #  plugins={"root": "plugins"},
@@ -94,8 +103,14 @@ async def download_media_test(bot, message):
     new_filename = f"rkn_botz_testedbotz_digital_botz.mkv"
     try:
         # file downloading started...
-        downloading = f"downloads/{user_id}/rkn{new_filename}"
-        path = await bot.download_media(message=message, file_name=downloading, progress=progress_for_pyrogram, progress_args=("Download Started....", rkn_botz, time.time()))                    
+        dc_id = """5"""
+        dcid = FileId.decode(message.file_id).dc_id
+        if dc_id in dcid:
+            downloading = f"downloads/{user_id}/rkn{new_filename}"
+            path = await dc_bot.download_media(message=message, file_name=downloading, progress=progress_for_pyrogram, progress_args=("Download Started....", rkn_botz, time.time()))
+	else:
+            downloading = f"downloads/{user_id}/rkn{new_filename}"
+            path = await bot.download_media(message=message, file_name=downloading, progress=progress_for_pyrogram, progress_args=("Download Started....", rkn_botz, time.time()))
     except Exception as e:
      	return await rkn_botz.edit(e)
      	     
@@ -128,6 +143,7 @@ async def download_media_test(bot, message):
     os.remove(file_path)
 
 bot.run()
+dc_bot.run
 # Rkn Developer 
 # Don't Remove Credit 😔
 # Telegram Channel @RknDeveloper & @Rkn_Bots
