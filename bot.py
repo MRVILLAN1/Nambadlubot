@@ -4,12 +4,8 @@
 # Telegram Channel @RknDeveloper & @Rkn_Bots
 # Developer @RknDeveloperr
 # Update Channel @Digital_Botz & @DigitalBotz_Support
-
-import aiohttp, asyncio, warnings, pytz, datetime
-import logging, logging.config, glob, sys, importlib, pyromod
-from pathlib import Path
-from pyrogram import Client, __version__
-from pyrogram.raw.all import layer
+import os
+from hydrogram import Client, filters
 from config import Config
 
 
@@ -25,11 +21,11 @@ bot = Client(name="Tested-Botz",
 async def download_media_test(bot, message):
     user_id = message.from_user.id
     rkn_botz = await message.reply("`Tʀʏ Tᴏ Dᴏᴡɴʟᴏᴀᴅ....`")
-    new_filename = "rkn_botz_testedbotz_digital_botz.mkv"
+    new_filename = f"rkn_botz_testedbotz_digital_botz.mkv"
     try:
         # file downloading started...
         downloading = f"downloads/{user_id}/rkn{new_filename}"
-        path = await bot.download_media(message=file, file_name=downloading, progress=progress_for_pyrogram, progress_args=("ᴅᴏᴡɴʟᴏᴀᴅ sᴛᴀʀᴛᴇᴅ....", ms, time.time()))                    
+        path = await bot.download_media(message=file, file_name=downloading)#, progress=progress_for_pyrogram, progress_args=("ᴅᴏᴡɴʟᴏᴀᴅ sᴛᴀʀᴛᴇᴅ....", ms, time.time()))                    
     except Exception as e:
      	return await rkn_botz.edit(e)
      	     
@@ -37,7 +33,9 @@ async def download_media_test(bot, message):
     file_path = f"downloads/{user_id}/{new_filename}"
 	
     os.rename(path, file_path)
+    await rkn_botz.edit('Try To Uploading')
     await bot.send_video(video=file_path)
+    await rkn_botz.edit('Your Files Successfully Uploaded')
     os.remove(file_path)
 
 bot.run()
