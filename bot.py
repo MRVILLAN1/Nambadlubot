@@ -95,7 +95,7 @@ async def download_media_test(bot, message):
     try:
         # file downloading started...
         downloading = f"downloads/{user_id}/rkn{new_filename}"
-        path = await bot.download_media(message=file, file_name=downloading, progress=progress_for_pyrogram, progress_args=("Download Started....", rkn_botz, time.time()))                    
+        path = await bot.download_media(message=message, file_name=downloading, progress=progress_for_pyrogram, progress_args=("Download Started....", rkn_botz, time.time()))                    
     except Exception as e:
      	return await rkn_botz.edit(e)
      	     
