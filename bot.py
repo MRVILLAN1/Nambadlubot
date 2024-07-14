@@ -108,7 +108,7 @@ async def download_media_test(bot, message):
         
         dcid = FileId.decode(rkn_file.file_id).dc_id
         print(dcid)
-        if str(dcid) in DCVV:
+        if dcid==DCVV:
             downloading = f"downloads/{user_id}/rkn{new_filename}"
             path = await dc_bot.download_media(message=message, file_name=downloading, progress=progress_for_pyrogram, progress_args=("Download Started....", rkn_botz, time.time()))
         else:
