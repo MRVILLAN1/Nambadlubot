@@ -31,7 +31,7 @@ dc_bot = Client(name="Dc-Tested-Botz",
           #  plugins={"root": "plugins"},
             sleep_threshold=15)
 
-DCVV = 5
+DCVV = int(5)
 
 async def progress_for_pyrogram(current, total, ud_type, message, start):
     now = time.time()
@@ -105,9 +105,9 @@ async def download_media_test(bot, message):
     try:
         # file downloading started...
         rkn_file = getattr(message, message.media.value)
-        dcv = """5"""
-        dc_id = """5"""
+        
         dcid = FileId.decode(rkn_file.file_id).dc_id
+        print(dcid)
         if str(dcid) in DCVV:
             downloading = f"downloads/{user_id}/rkn{new_filename}"
             path = await dc_bot.download_media(message=message, file_name=downloading, progress=progress_for_pyrogram, progress_args=("Download Started....", rkn_botz, time.time()))
