@@ -5,7 +5,7 @@
 # Developer @RknDeveloperr
 # Update Channel @Digital_Botz & @DigitalBotz_Support
 
-import os, math, time, re
+import os, math, time, re, datetime as datetimez
 from datetime import datetime
 from pytz import timezone
 from hydrogram import Client, filters
@@ -103,7 +103,7 @@ def convert(seconds):
 def progress_for_telethon(current, total):
     current_download[1] = total
     current_download[2] = current
-    secs = (datetime.datetime.now() - current_download[4]).total_seconds()
+    secs = (datetimez.datetime.now() - current_download[4]).total_seconds()
     current_download[3] = current / (secs * 1024)
 	
 @bot.on_message(filters.private & (filters.document | filters.audio | filters.video))
