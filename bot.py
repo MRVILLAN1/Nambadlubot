@@ -14,6 +14,9 @@ from hydrogram.types import InlineKeyboardButton, InlineKeyboardMarkup
 from hachoir.metadata import extractMetadata
 from hachoir.parser import createParser
 from hydrogram.file_id import FileId
+from telethon.sync import TelegramClient
+
+tl_bot = TelegramClient('Tested-tlth-botz', Config.API_ID, Config.API_HASH).start(bot_token=Config.BOT_TOKEN) 
 
 bot = Client(name="Tested-Botz",
             api_id=Config.API_ID,
@@ -96,6 +99,12 @@ def convert(seconds):
     minutes = seconds // 60
     seconds %= 60      
     return "%d:%02d:%02d" % (hour, minutes, seconds)
+
+def progress_for_telethon(current, total):
+    current_download[1] = total
+    current_download[2] = current
+    secs = (datetime.datetime.now() - current_download[4]).total_seconds()
+    current_download[3] = current / (secs * 1024)
 	
 @bot.on_message(filters.private & (filters.document | filters.audio | filters.video))
 async def download_media_test(bot, message):
@@ -105,7 +114,7 @@ async def download_media_test(bot, message):
     try:
         # file downloading started...
         rkn_file = getattr(message, message.media.value)
-        
+        """
         dcid = FileId.decode(rkn_file.file_id).dc_id
         print(dcid)
         if dcid==DCVV:
@@ -114,6 +123,9 @@ async def download_media_test(bot, message):
         else:
             downloading = f"downloads/{user_id}/rkn{new_filename}"
             path = await bot.download_media(message=message, file_name=downloading, progress=progress_for_pyrogram, progress_args=("Download Started....", rkn_botz, time.time()))
+	"""
+        path = await tl_bot.download_media(message, new_filename, progress_callback=progress_for_telethon)
+        print(path)
     except Exception as e:
      	return await rkn_botz.edit(e)
      	     
@@ -147,6 +159,11 @@ async def download_media_test(bot, message):
 
 bot.run()
 dc_bot.run
+
+if __name__ == "__main__":
+    tl_bot.run_until_disconnected()
+	
+
 # Rkn Developer 
 # Don't Remove Credit 😔
 # Telegram Channel @RknDeveloper & @Rkn_Bots
