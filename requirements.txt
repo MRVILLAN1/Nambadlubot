@@ -1,5 +1,6 @@
 #pyrogram==2.0.93
 hydrogram
+telethon
 TgCrypto
 motor
 dnspython
