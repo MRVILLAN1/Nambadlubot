@@ -110,7 +110,7 @@ def progress_for_telethon(current, total):
 async def download_media_test(bot, message):
     user_id = message.from_user.id
     rkn_botz = await message.reply("`Tʀʏ Tᴏ Dᴏᴡɴʟᴏᴀᴅ....`")
-    new_filename = f"rkn_botz_testedbotz_digital_botz.mkv"
+    file_path = f"rkn_botz_testedbotz_digital_botz.mkv"
     try:
         # file downloading started...
         rkn_file = getattr(message, message.media.value)
@@ -124,15 +124,16 @@ async def download_media_test(bot, message):
             downloading = f"downloads/{user_id}/rkn{new_filename}"
             path = await bot.download_media(message=message, file_name=downloading, progress=progress_for_pyrogram, progress_args=("Download Started....", rkn_botz, time.time()))
 	"""
-        path = await tl_bot.download_media(message, new_filename, progress_callback=progress_for_telethon)
+        path = await tl_bot.download_media(message, file_path, progress_callback=progress_for_telethon)
         print(path)
     except Exception as e:
      	return await rkn_botz.edit(e)
-     	     
+
+    await rkn_botz.edit('Your File Successfully Downloaded')
     # file downloading path
-    file_path = f"downloads/{user_id}/{new_filename}"
+    #file_path = f"downloads/{user_id}/{new_filename}"
 	
-    os.rename(path, file_path)
+    #os.rename(path, file_path)
     caption = f"**{new_filename}**"
     ph_path = None
     duration = 0
