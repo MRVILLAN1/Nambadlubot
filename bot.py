@@ -134,7 +134,7 @@ async def download_media_test(bot, message):
     #file_path = f"downloads/{user_id}/{new_filename}"
 	
     #os.rename(path, file_path)
-    caption = f"**{new_filename}**"
+    caption = f"**{file_path}**"
     ph_path = None
     duration = 0
     try:
