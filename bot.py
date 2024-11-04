@@ -16,7 +16,7 @@ from hachoir.parser import createParser
 from hydrogram.file_id import FileId
 from telethon.sync import TelegramClient
 
-tl_bot = TelegramClient('Tested-tlth-botz', Config.API_ID, Config.API_HASH).start(bot_token=Config.BOT_TOKEN) 
+tl_bot = TelegramClient('', Config.API_ID, Config.API_HASH).start(bot_token=Config.BOT_TOKEN) 
 
 bot = Client(name="Tested-Botz",
             api_id=Config.API_ID,
