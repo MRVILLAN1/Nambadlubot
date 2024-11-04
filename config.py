@@ -10,8 +10,8 @@ id_pattern = re.compile(r'^.\d+$')
 
 class Config(object):
     # digital_botz client config
-    API_ID = os.environ.get("API_ID", "")
-    API_HASH = os.environ.get("API_HASH", "")
+    API_ID = os.environ.get("API_ID", "28837789")
+    API_HASH = os.environ.get("API_HASH", "33c9162294cdd6c9d51d964e4469fadb")
 
     DC_API_ID = os.environ.get("DC_API_ID", "")
     DC_API_HASH = os.environ.get("DC_API_HASH", "")
@@ -23,12 +23,12 @@ class Config(object):
     
     # database config
     DB_NAME = os.environ.get("DB_NAME","Digital_Rename_Bot")     
-    DB_URL = os.environ.get("DB_URL","")
+    DB_URL = os.environ.get("DB_URL","mongodb+srv://smallcapitaltrader1:XVsdQj8vu38ZIFoy@cluster0.9g3ri.mongodb.net/?retryWrites=true&w=majority&appName=Cluster0")
  
     # other configs
-    RKN_PIC = os.environ.get("RKN_PIC", "https://telegra.ph/file/b746aadfe59959eb76f59.jpg")
-    ADMIN = [int(admin) if id_pattern.search(admin) else admin for admin in os.environ.get('ADMIN', '6705898491').split()]
-    LOG_CHANNEL = int(os.environ.get("LOG_CHANNEL", "-1002123429361"))
+    RKN_PIC = os.environ.get("RKN_PIC", "https://i.ibb.co/FBqXzK6/2debf492cbcf64e37bf44604f9251abd.jpg")
+    ADMIN = [int(admin) if id_pattern.search(admin) else admin for admin in os.environ.get('ADMIN', '8087702564').split()]
+    LOG_CHANNEL = int(os.environ.get("LOG_CHANNEL", "-1002445805057"))
 
     #force subs
     try:
